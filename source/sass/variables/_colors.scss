@@ -1,0 +1,23 @@
+$siteColors: (
+  "white"        : #ffffff,
+  "black"        : #000000,
+  "light-grey"   : #f5f5f5,
+  "middle-grey"  : #d8d8d8,
+  "dark-grey"    : #7c7c7c,
+  "nearly-black" : #1f1f1f,
+  "red"          : #c50c0e,
+  "error-red"    : #ca3e44,
+  "green"        : #5fa933,
+);
+
+$siteColorBg: getColor("white");
+$siteColorText: getColor("nearly-black");
+
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+
+$color__text-screen: #21759b;
+
+$color__border-abbr: #666;

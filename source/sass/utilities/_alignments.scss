@@ -1,0 +1,16 @@
+.u-alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.u-alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.u-aligncenter {
+	clear: both;
+	@include center-block;
+}

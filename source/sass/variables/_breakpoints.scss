@@ -1,0 +1,126 @@
+$global-breakpoints: (
+  'xxl': 1276px,
+  'xl': 1023px,
+  'l': 900px,
+  'm': 767px,
+  's': 640px,
+  'xs': 480px,
+  'xxs': 420px,
+  'xxxs': 360px
+) !default;
+
+// ---------
+// functions
+// ---------
+
+// Get a breakpoint's width
+// @param {string} $name - Name of the breakpoint. One of $global-breakpoints or from another $breakpoints list
+// @requires {variable} $global-breakpoints
+// @return {number} Value as defined
+@function _get-media-breakpoint-width($name, $breakpoints: $global-breakpoints) {
+    @if map-has-key($breakpoints, $name) {
+        $breakpoint: map-get($breakpoints, $name);
+        @return if(type-of($breakpoint) == list, nth($breakpoint, 1), $breakpoint);
+    }
+    @error "The requested breakpoint '#{$name}' does not exist in config map";
+}
+
+@function _media-breakpoint-is-argument($property) {
+    $valid-properties: (min-width, min-height, max-width, max-height);
+    @return not not index($valid-properties, $property);
+}
+
+@function _media-breakpoint-is-upper-limit-property($property) {
+    $valid-properties: (max-width, max-height);
+    @return not not index($valid-properties, $property);
+}
+
+@function _media-breakpoint-raise-by-one($number) {
+    @if unit($number) == "em" {
+        @return $number + 0.01;
+    }
+    @elseif unit($number) == "px" {
+        @return $number + 1;
+    }
+    @elseif unit($number) == "rem" {
+        @return $number + 0.1;
+    }
+    @error "Number '#{$number}' cannot be raised by one. '#{unit($number)}' is an unsupported unit";
+}
+
+// Breakpoint / Media Query mixin
+// @param {string|number|boolean} $from (false) - One of $en-media-breakpoints, another $breakpoints list or any number value
+// @param {string|number|boolean} $until (false) - One of $en-media-breakpoints, another $breakpoints list or any number value
+// @param {string|boolean} $and (false) - Additional media query parameters
+// @param {string|boolean} $or (false) - Additional media query parameters
+// @param {map} $breakpoints
+// @param {string} $type ('width') - Width or height media queries
+//
+// @content styling rules that will be wrapped into a @media query
+//
+// @requires {variable} $global-breakpoints
+// @requires {function} _get-media-breakpoint-width
+//
+// @example scss
+//  .element {
+//    @include media-breakpoint($from: small) {
+//      font-size: 1.2em;
+//    }
+//    @include media-breakpoint($until: medium) {
+//      font-size: 1.4em;
+//    }
+//    @include media-breakpoint(small, medium) {
+//      font-size: 1.3em;
+//    }
+//    @include media-breakpoint($from: small, $and: '(orientation: portrait)') {
+//      font-size: 1em;
+//    }
+//    @include media-breakpoint(950px) {
+//      font-size: 1.7em;
+//    }
+//  }
+
+@mixin media-breakpoint(
+    $until: false,
+    $from: false,
+    $and: false,
+    $or: false,
+    $breakpoints: $global-breakpoints,
+    $type: width
+) {
+    $min-value: null;
+    $max-value: null;
+    $media-query: 'screen';
+
+    // Lower limit
+    @if $from {
+        @if type-of($from) == number {
+            $min-value: $from;
+        } @else {
+            $min-value: _get-media-breakpoint-width($from, $breakpoints);
+        }
+    }
+
+    // Upper limit
+    @if $until {
+        @if type-of($until) == number {
+            $max-value: $until;
+        } @else {
+            $max-value: _get-media-breakpoint-width($until, $breakpoints);
+        }
+    }
+
+    // reduce lower limit by one
+    @if $min-value {
+        $min-value: _media-breakpoint-raise-by-one($min-value);
+    }
+
+    @if $min-value != null { $media-query: '#{$media-query} and (min-#{$type}: #{$min-value})'; }
+    @if $max-value != null { $media-query: '#{$media-query} and (max-#{$type}: #{$max-value})'; }
+    @if $and { $media-query: '#{$media-query} and #{$and}'; }
+    @if $or { $media-query: '#{$media-query}, #{$or}'; }
+
+    @media #{$media-query} {
+        @content;
+    }
+}

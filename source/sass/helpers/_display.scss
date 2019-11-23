@@ -1,0 +1,27 @@
+.is-hidden {
+  display: none !important;
+}
+
+@each $breakpoint-name, $value in $global-breakpoints {
+  @include media-breakpoint($from: $breakpoint-name) {
+    .is-hidden-#{$breakpoint-name}-up {
+      display: none !important;
+    }
+  }
+  @include media-breakpoint($breakpoint-name) {
+    .is-hidden-#{$breakpoint-name}-down {
+      display: none !important;
+    }
+  }
+
+  @include media-breakpoint($from: $breakpoint-name) {
+    .is-visible-#{$breakpoint-name}-up {
+      display: block !important;
+    }
+  }
+  @include media-breakpoint($breakpoint-name) {
+    .is-visible-#{$breakpoint-name}-down {
+      display: block !important;
+    }
+  }
+}

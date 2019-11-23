@@ -1,0 +1,113 @@
+:Author: Kevin Pfeifer
+:description: This document describes the current state of the process how to set up the local setup with a GIT Repo and the vhost on the batman
+
+= Initiales Repo aufsetzen
+{author} <kevin.pfeifer@sunlime.at>
+v1.0, 2019-07-03
+:source-highlighter: pygments
+:page-layout: docs
+:linkattrs:
+:sectanchors:
+:experimental:
+:idprefix:
+:idseparator: -
+:toc: macro
+:icons: font
+
+
+1. Ein neues Repository bei Bitbucket erstellen und dieses lokal auschecken (Beispiel: `kcc`)
+
+2. Den Master Branch von unserem `wordpress` Repository herunterladen
+    https://bitbucket.org/sunlimeitservices/wordpress/src/2019_git_local_setup_oop/ +
+    Über das linke Menü "Downloads" => Branches => "master" ZIP
+
+3. Den Inhalt dieses ZIPs in das zuvor ausgecheckte neue Repository entpacken. +
+    *Darauf achten dass die .gitignore mit kopiert wird!*
+
+4. Die `mktheme.sh` öffnen und die Werte `NAME`, `SLUG` und `DESC` durch die eigenen Theme Strings ersetzen.
+
+5. Die `mktheme.sh` ausführen => `./mktheme.sh` und danach löschen.
+
+6. Diesen Stand in das Repository commiten und pushen.
+
+7. Am Batman Server mit dem User `batcave` anmelden und in den Ordner `chroot` gehen.
+
+8. Dort das zuvor neu erstellte Repository auschecken.
+    Damit sollte an unserem Beispiel ein Ordner `kcc` im `chroot` Order liegen.
+
+9. `npm i` am Batman in dem ausgecheckten Repository durchführen.
+
+10. Nun sollte die Seite zumindest über folgende URL aufrufbar sein: https://<repo-name>.sunlime.io
+
+11. Über https://batman.sunlime.at/phpmyadmin/ sich mit dem `batcave` Benutzer anmelden und eine neue Datenbank erstellen.
+    An unserem Beispiel heist diese Datenbank dann `batcave_kcc`
+
+12. Den Wordpress Installer auf der Domain https://<repo-name>.sunlime.io durchführen mit der zuvor
+    neu erstellten Datenbank und den Anmeldedaten vom `batcave` Datenbank-Benutzer (siehe 1Password) +
+    Die Serveradresse *muss* hier `127.0.0.1` sein da (wegen der aktuellen chroot-Umgebung) `localhost` nicht funktioniert.
+
+13. In dem lokal ausgecheckten Repo das `gulpfile.js` öffnen und im Task `uploads`, `db` und `default` folgende Werte anpassen:
++
+[source,js]
+----
+gulp.task('uploads', function() {
+  var remote_user = 'batcave';
+  var remote_server = 'batman.sunlime.at';
+  var remote_path = '/home/batcave/chroot/kcc/docroot/wp-content/uploads/';
+  ...
+});
+----
++
+[source,js]
+----
+gulp.task('db', function() {
+  var remote_user = 'batcave';
+  var remote_server = 'batman.sunlime.at';
+  var remote_path = '/home/batcave/chroot/kcc/docroot'; // without / at the end
+  var domain = 'https://sunlime:sunlime.io@kcc.sunlime.io'; // without / at the end
+  var mysql_running = fs.existsSync('/tmp/kcc.mysql.sock');
+
+  if(!mysql_running) {
+    if(!fs.existsSync('mysql_data')) {
+      exec.execSync('mkdir mysql_data && /usr/local/mysql/bin/mysqld --skip-networking --initialize -h ./mysql_data');
+    }
+    exec.exec('/usr/local/mysql/bin/mysqld --skip-networking --socket=/tmp/kcc.mysql.sock --skip-grant-tables -h ./mysql_data');
+  }
+  ...
+});
+----
++
+[source,js]
+----
+gulp.task('default', function() {
+  ...
+  exec.exec('killall -9 mysqld; /usr/local/mysql/bin/mysqld --skip-networking --socket=/tmp/kcc.mysql.sock --skip-grant-tables -h ./mysql_data');
+  ...
+});
+----
+
+    a. Beim `uploads` Task muss der `remote_path` der absolute Pfad zum Uploads Ordner sein
+    b. Beim `db` Task muss der `remote_path` der absolute Pfad zum Document-Root sein
+    c. Der MySQL-Socket muss hier überall `/tmp/<repo-name>.mysql.sock` sein, hier also `/tmp/kcc.mysql.sock`
+
+14. Ebenso muss der Pfad zur `mysql.sock` Datei in der `sqldump.php` und `php.ini` Datei auch angepasst werden:
+
+    a. `<repo-name>` => an unserem Beispiel `kcc`
++
+image::https://screenshot.sunlime.at/21bbb60663095e99aba56ece2e47a783[]
+image::https://screenshot.sunlime.at/069fa28411c4c60fa29c0a78249e24ca[]
+
+15. Die Node-Modules installieren `npm i`
+
+16. Der Befehl `gulp db` sollte nun ohne Fehlermeldung durchlaufen.
+
+17. Mit dem Befehl `gulp` startet der lokale Webserver und die lokale Entwicklung der Webseite kann gestartet werden.
+
+18. Damit die in das Repo gepushten Änderungen auch auf den "DEV"-Server durchgeführt werden muss ein
+    Webhook bei Bitbucket eingerichtet werden.
++
+image::https://screenshot.sunlime.at/1ffb7e01d5b3d294067b96fee6185446[]
+image::https://screenshot.sunlime.at/eb75d9b41cdae6fc9a1bd8f72c325272[]
+
+a. Title: Batcave +
+    URL: https://batman.sunlime.at/batcave.php

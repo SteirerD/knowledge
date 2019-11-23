@@ -1,0 +1,19 @@
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: $siteColorText;
+	font-family: $siteFontFamily;
+  font-weight: $siteFontWeight;
+	@include font-size($siteFontSize);
+	line-height: $siteLineHeight;
+  letter-spacing: $siteLetterSpacing;
+}
+
+@import "headings";
+
+@import "copy";
+
+@import "fonts";

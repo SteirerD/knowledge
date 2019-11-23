@@ -1,0 +1,10 @@
+a,
+.o-link{
+	color: inherit;
+	text-decoration: none;
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}

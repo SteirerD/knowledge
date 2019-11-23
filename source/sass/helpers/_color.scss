@@ -1,0 +1,15 @@
+// -----------------
+// GET COLOR BY NAME
+// -----------------
+// an optional $context other than "text" basically adds a suffix to the color name
+@function getColor($name, $context: text, $list: $siteColors) {
+  $ret: false;
+  @if $context == bg {
+    $ret: map-get($list, $name + "_bg");
+  }
+  @else {
+    $ret: map-get($list, $name);
+  }
+  @if $ret == false { $ret: null; }
+  @return $ret;
+}

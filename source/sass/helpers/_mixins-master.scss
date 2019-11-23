@@ -1,0 +1,229 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get( $columns, $numberColumns ) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+}
+
+@mixin transition($transition...) {
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	-ms-transition: $transition;
+	-webkit-transition: $transition;
+	transition: $transition;
+}
+
+@mixin transition-property($property...) {
+	-moz-transition-property: $property;
+	-o-transition-property: $property;
+	-ms-transition-property: $property;
+	-webkit-transition-property: $property;
+	transition-property: $property;
+}
+
+@mixin transition-duration($duration...) {
+	-moz-transition-duration: $duration;
+	-o-transition-duration: $duration;
+	-ms-transition-duration: $duration;
+	-webkit-transition-duration: $duration;
+	transition-duration: $duration;
+}
+
+@mixin transition-timing-function($timing...) {
+	-moz-transition-timing-function: $timing;
+	-o-transition-timing-function: $timing;
+	-ms-transition-timing-function: $timing;
+	-webkit-transition-timing-function: $timing;
+	transition-timing-function: $timing;
+}
+
+@mixin transition-delay($delay...) {
+	-moz-transition-delay: $delay;
+	-o-transition-delay: $delay;
+	-ms-transition-delay: $delay;
+	-webkit-transition-delay: $delay;
+	transition-delay: $delay;
+}
+
+// generic transform
+@mixin transform($transforms) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+	transform: $transforms;
+}
+
+@mixin gradient($direction, $col_1, $col_2) {
+	background: $col_1;
+	background: -webkit-linear-gradient($direction, $col_1, $col_2);
+	background: -o-linear-gradient($direction, $col_1, $col_2);
+	background: -moz-linear-gradient($direction, $col_1, $col_2);
+	background: linear-gradient(to #{$direction}, $col_1, $col_2);
+}
+
+@mixin trans_rotate($x, $y, $deg) {
+	-moz-transform: translate($x, $y) rotate(#{$deg}deg);
+	-o-transform: translate($x, $y) rotate(#{$deg}deg);
+	-ms-transform: translate($x, $y) rotate(#{$deg}deg);
+	-webkit-transform: translate($x, $y) rotate(#{$deg}deg);
+	transform: translate($x, $y) rotate(#{$deg}deg);
+}
+
+@mixin trans_scale($x, $y, $scale) {
+	-moz-transform: translate($x, $y) scale($scale);
+	-o-transform: translate($x, $y) scale($scale);
+	-ms-transform: translate($x, $y) scale($scale);
+	-webkit-transform: translate($x, $y) scale($scale);
+	transform: translate($x, $y) scale($scale);
+}
+
+// rotate
+@mixin rotate($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+	@include transform(scale($scale));
+}
+
+// translate
+@mixin translate($x, $y) {
+	@include transform(translate($x, $y));
+}
+
+@mixin translateY($y) {
+	@include transform(translateY($y));
+}
+
+// skew
+@mixin skew($x, $y) {
+	@include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+@mixin calc($property, $expression) {
+	#{$property}: -moz-calc(#{$expression});
+	#{$property}: -webkit-calc(#{$expression});
+	#{$property}: calc(#{$expression});
+}
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+	@if $inset {
+		-webkit-box-shadow: inset $top $left $blur $color;
+		-moz-box-shadow: inset $top $left $blur $color;
+		box-shadow: inset $top $left $blur $color;
+	} @else {
+		-webkit-box-shadow: $top $left $blur $color;
+		-moz-box-shadow: $top $left $blur $color;
+		box-shadow: $top $left $blur $color;
+	}
+}
+
+@mixin bg_rgba($color, $opacity) {
+	background-color: $color;
+	background-color: rgba($color, $opacity);
+}
+
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	-moz-animation: #{$str};
+	-ms-animation: #{$str};
+	-o-animation: #{$str};
+	animation: #{$str};
+}
+
+@mixin animation-name($property...) {
+	-moz-animation-name:    $property;
+	-o-animation-name:      $property;
+	-ms-animation-name:     $property;
+	-webkit-animation-name: $property;
+	animation-name:         $property;
+}
+
+@mixin animation-duration($duration...) {
+	-moz-animation-duration:    $duration;
+	-o-animation-duration:      $duration;
+	-ms-animation-duration:     $duration;
+	-webkit-animation-duration: $duration;
+	animation-duration:         $duration;
+}
+
+@mixin animation-timing-function($timing...) {
+	-moz-animation-timing-function:    $timing;
+	-o-animation-timing-function:      $timing;
+	-ms-animation-timing-function:     $timing;
+	-webkit-animation-timing-function: $timing;
+	animation-timing-function:         $timing;
+}
+
+@mixin animation-delay($delay...) {
+	-moz-animation-delay:    $delay;
+	-o-animation-delay:      $delay;
+	-ms-animation-delay:     $delay;
+	-webkit-animation-delay: $delay;
+	animation-delay:         $delay;
+}
+
+@mixin animation-fill-mode($fillmode...) {
+	-moz-animation-delay:    $fillmode;
+	-o-animation-delay:      $fillmode;
+	-ms-animation-delay:     $fillmode;
+	-webkit-animation-delay: $fillmode;
+	animation-delay:         $fillmode;
+}
+
+@mixin animation-direction($direction...) {
+	-moz-animation-delay:    $direction;
+	-o-animation-delay:      $direction;
+	-ms-animation-delay:     $direction;
+	-webkit-animation-delay: $direction;
+	animation-delay:         $direction;
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}

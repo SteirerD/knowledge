@@ -1,0 +1,32 @@
+.c-wysiwyg ul {
+  list-style: none;
+}
+
+.c-wysiwyg ul > li {
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.c-wysiwyg ul > li:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.1875em;
+  left: 0.1875em;
+  width: 0.8125em;
+  height: 0.8125em;
+  background: url('assets/img/check.svg') no-repeat center center;
+  background-size: 100%;
+}
+
+.c-wysiwyg a {
+  text-decoration: underline;
+}
+
+.c-wysiwyg > *:first-child {
+  margin-top: 0;
+}
+
+.c-wysiwyg > *:last-child {
+  margin-bottom: 0;
+}
