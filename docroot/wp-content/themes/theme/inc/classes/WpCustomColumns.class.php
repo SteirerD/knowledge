@@ -65,7 +65,7 @@ class WpCustomColumns {
 
 		$this->defaultSettings = array(
 			// display name of the column
-			'name' => __('Eigene Spalte', 'glc'),
+			'name' => __('Eigene Spalte', 'wiki'),
 
 			// post types to show the column in
 			'post_types' => array('post'),
@@ -76,7 +76,7 @@ class WpCustomColumns {
 			// display the conten. ether a string (name of meta_key) or a function
 			// 'content' => 'meta_key',
 			'content' => function($post, $args = array()) {
-				return '<em>' . __('Kein Content-Callback definiert', 'glc') . '</em>';
+				return '<em>' . __('Kein Content-Callback definiert', 'wiki') . '</em>';
 			},
 			// parameters for content callbacks
 			'content_args' => array(),

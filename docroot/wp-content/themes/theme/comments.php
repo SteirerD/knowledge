@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package GLC
+ * @package wiki
  */
 
 /*
@@ -28,18 +28,18 @@ if ( post_password_required() ) {
 		?>
 		<h2 class="c-comments-area__title">
 			<?php
-			$glc_comment_count = get_comments_number();
-			if ( '1' === $glc_comment_count ) {
+			$wiki_comment_count = get_comments_number();
+			if ( '1' === $wiki_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'Ein Kommentar zu &ldquo;%1$s&rdquo;', 'glc' ),
+					esc_html__( 'Ein Kommentar zu &ldquo;%1$s&rdquo;', 'wiki' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
 				printf( // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s Kommentar zu &ldquo;%2$s&rdquo;', '%1$s Kommentare zu &ldquo;%2$s&rdquo;', $glc_comment_count, 'comments title', 'glc' ) ),
-					number_format_i18n( $glc_comment_count ),
+					esc_html( _nx( '%1$s Kommentar zu &ldquo;%2$s&rdquo;', '%1$s Kommentare zu &ldquo;%2$s&rdquo;', $wiki_comment_count, 'comments title', 'wiki' ) ),
+					number_format_i18n( $wiki_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			}
@@ -63,7 +63,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Keine Kommentare möglich.', 'glc' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Keine Kommentare möglich.', 'wiki' ); ?></p>
 			<?php
 		endif;
 

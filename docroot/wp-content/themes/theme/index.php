@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package GLC
+ * @package wiki
  */
 
 get_header();
@@ -32,32 +32,7 @@ get_header();
            */
           get_template_part( 'template-parts/content', get_post_type() );
           ?>
-          <div class="testslider">
-            <div class="slider">
-              <h1>slider 1</h1>
-              <img src="https://glc.steirer.info/wp-content/uploads/2019/09/canstockphoto7734492.jpg">
-            </div>
-            <div class="slider">
-              <h1>slider 2</h1>
-              <img src="https://glc.steirer.info/wp-content/uploads/2019/09/canstockphoto7480444.jpg">
-            </div>
-            <div class="slider">
-              <h1>slider 3</h1>
-              <img src="https://glc.steirer.info/wp-content/uploads/2019/09/canstockphoto7252686.jpg">
-            </div>
-            <div class="slider">
-              <h1>slider 4</h1>
-              <img src="https://glc.steirer.info/wp-content/uploads/2019/09/canstockphoto7734492.jpg">
-            </div>
-            <div class="slider">
-              <h1>slider 5</h1>
-              <img src="https://glc.steirer.info/wp-content/uploads/2019/09/canstockphoto7480444.jpg">
-            </div>
-            <div class="slider">
-              <h1>slider 6</h1>
-              <img src="https://glc.steirer.info/wp-content/uploads/2019/09/canstockphoto7252686.jpg">
-            </div>
-          </div>
+          
           <?php
         
         endwhile;

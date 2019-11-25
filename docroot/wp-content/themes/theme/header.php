@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package GLC
+ * @package wiki
  */
 
 ?>
@@ -22,11 +22,11 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="c-main-site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Zum Inhalt springen', 'glc' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Zum Inhalt springen', 'wiki' ); ?></a>
 
 	<header id="masthead" class="c-main-header">
 		<div class="c-main-header__logo">
-			<?php the_custom_logo(); ?>
+			<img class="c-main-header__logo-img" src="<?php echo get_template_directory_uri()?>/inc/img/logo.png">
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="c-main-navigation">
@@ -39,7 +39,7 @@
                      ) );
 			?>
       <button class="c-main-navigation__togle" aria-controls="primary-menu" aria-expanded="false">
-        <?php esc_html_e( 'Hauptmenü', 'glc' ); ?>
+        <?php esc_html_e( 'Hauptmenü', 'wiki' ); ?>
       </button>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

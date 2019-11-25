@@ -8,33 +8,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package GLC
+ * @package wiki
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses glc_header_style()
+ * @uses wiki_header_style()
  */
-function glc_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'glc_custom_header_args', array(
+function wiki_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'wiki_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'glc_header_style',
+		'wp-head-callback'       => 'wiki_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'glc_custom_header_setup' );
+add_action( 'after_setup_theme', 'wiki_custom_header_setup' );
 
-if ( ! function_exists( 'glc_header_style' ) ) :
+if ( ! function_exists( 'wiki_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see glc_custom_header_setup().
+	 * @see wiki_custom_header_setup().
 	 */
-	function glc_header_style() {
+	function wiki_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

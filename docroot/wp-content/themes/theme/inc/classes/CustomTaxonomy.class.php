@@ -40,17 +40,17 @@
       $labels = array_merge(
       // Default
         array(
-          'name'                  => _x( $this->plural_name, 'taxonomy general name', 'glc' ),
-          'singular_name'         => _x( $this->singular_name, 'taxonomy singular name', 'glc' ),
-          'search_items'          => sprintf(_x( 'Suche %s', 'taxonomy search items name', 'glc' ), $this->plural_name),
-          'all_items'             => sprintf(_x( 'Alle %s', 'taxonomy all items name', 'glc' ), $this->plural_name),
-          'parent_item'           => sprintf(_x( 'Eltern-%s', 'taxonomy parent item name', 'glc' ), $this->singular_name),
-          'parent_item_colon'     => sprintf(_x( 'Eltern-%s:', 'taxonomy parent item colon name', 'glc' ), $this->singular_name),
-          'edit_item'             => sprintf(_x( '%s bearbeiten', 'taxonomy edit item name', 'glc' ), $this->singular_name),
-          'update_item'           => sprintf(_x( '%s aktualisieren', 'taxonomy update item name', 'glc' ), $this->singular_name),
-          'add_new_item'          => sprintf(_x( '%s hinzufügen', 'taxonomy add new item name', 'glc' ), $this->singular_name),
-          'new_item_name'         => sprintf(_x( 'Neuer %s Name', 'taxonomy new item name', 'glc' ), $this->singular_name),
-          'menu_name'             => __( $this->menu_name, 'glc' ),
+          'name'                  => _x( $this->plural_name, 'taxonomy general name', 'wiki' ),
+          'singular_name'         => _x( $this->singular_name, 'taxonomy singular name', 'wiki' ),
+          'search_items'          => sprintf(_x( 'Suche %s', 'taxonomy search items name', 'wiki' ), $this->plural_name),
+          'all_items'             => sprintf(_x( 'Alle %s', 'taxonomy all items name', 'wiki' ), $this->plural_name),
+          'parent_item'           => sprintf(_x( 'Eltern-%s', 'taxonomy parent item name', 'wiki' ), $this->singular_name),
+          'parent_item_colon'     => sprintf(_x( 'Eltern-%s:', 'taxonomy parent item colon name', 'wiki' ), $this->singular_name),
+          'edit_item'             => sprintf(_x( '%s bearbeiten', 'taxonomy edit item name', 'wiki' ), $this->singular_name),
+          'update_item'           => sprintf(_x( '%s aktualisieren', 'taxonomy update item name', 'wiki' ), $this->singular_name),
+          'add_new_item'          => sprintf(_x( '%s hinzufügen', 'taxonomy add new item name', 'wiki' ), $this->singular_name),
+          'new_item_name'         => sprintf(_x( 'Neuer %s Name', 'taxonomy new item name', 'wiki' ), $this->singular_name),
+          'menu_name'             => __( $this->menu_name, 'wiki' ),
         ),
         // Given labels
         $this->labels

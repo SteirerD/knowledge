@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package GLC
+ * @package wiki
  */
 
 ?>
@@ -16,20 +16,20 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="c-entry__header-meta">
 			<?php
-			glc_posted_on();
-			glc_posted_by();
+			wiki_posted_on();
+			wiki_posted_by();
 			?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php glc_post_thumbnail(); ?>
+	<?php wiki_post_thumbnail(); ?>
 
 	<div class="c-entry__summary">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
 	<footer class="c-entry__footer">
-		<?php glc_entry_footer(); ?>
+		<?php wiki_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

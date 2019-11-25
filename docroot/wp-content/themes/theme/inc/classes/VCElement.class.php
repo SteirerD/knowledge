@@ -22,9 +22,9 @@
       $this->params = [];
     
       $this->element = array(
-        'name'        => __( $this->name, 'glc' ),
+        'name'        => __( $this->name, 'wiki' ),
         'base'        => $this->base,
-        'category'    => __($this->category, 'glc'),
+        'category'    => __($this->category, 'wiki'),
       );
       
       // Check if VC Plugin is installed and active
@@ -59,7 +59,7 @@
     public function addParam($type, $heading, $param_name, $args = []){
       $data = array(
         'type' => $type,
-        'heading' => __( $heading, 'glc' ),
+        'heading' => __( $heading, 'wiki' ),
         'param_name' => $param_name,
       );
   
@@ -130,7 +130,7 @@
         
         $data = array(
           'type' => $type,
-          'heading' => __( $heading, 'glc' ),
+          'heading' => __( $heading, 'wiki' ),
           'param_name' => $new_param_name,
         );
   
@@ -177,7 +177,7 @@
     public static function addParamToExistingElem($elem, $type, $heading, $param_name, $args ){
       $data = array(
         'type' => $type,
-        'heading' => __( $heading, 'glc' ),
+        'heading' => __( $heading, 'wiki' ),
         'param_name' => $param_name,
       );
   

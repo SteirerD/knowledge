@@ -4,14 +4,14 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package GLC
+ * @package wiki
  */
 
 ?>
 
 <section class="no-results not-found">
 	<header class="c-page-header">
-		<h1 class="c-page-header__title"><?php esc_html_e( 'Leider konnte nichts gefunden werden', 'glc' ); ?></h1>
+		<h1 class="c-page-header__title"><?php esc_html_e( 'Leider konnte nichts gefunden werden', 'wiki' ); ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="c-page-content">
@@ -21,7 +21,7 @@
 			printf(
 				'<p>' . wp_kses(
 					/* translators: 1: link to WP admin new post page. */
-					__( 'Bereit einen Eintrag zu schreiben? <a href="%1$s">Starte hier</a>.', 'glc' ),
+					__( 'Bereit einen Eintrag zu schreiben? <a href="%1$s">Starte hier</a>.', 'wiki' ),
 					array(
 						'a' => array(
 							'href' => array(),
@@ -34,14 +34,14 @@
 		elseif ( is_search() ) :
 			?>
 
-			<p><?php esc_html_e( 'Leider konnte nichts mit dem angegebenen Suchbegriff gefunden werden.', 'glc' ); ?></p>
+			<p><?php esc_html_e( 'Leider konnte nichts mit dem angegebenen Suchbegriff gefunden werden.', 'wiki' ); ?></p>
 			<?php
 			get_search_form();
 
 		else :
 			?>
 
-			<p><?php esc_html_e( 'Leider konnte hier nichts gefunden werden.', 'glc' ); ?></p>
+			<p><?php esc_html_e( 'Leider konnte hier nichts gefunden werden.', 'wiki' ); ?></p>
 			<?php
 			get_search_form();
 

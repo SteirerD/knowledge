@@ -2,9 +2,9 @@
 # Sunlime Web Innovations GmbH
 # http://www.sunlime.at/
 
-NAME="GLC"
-SLUG="glc"
-DESC="Grenzlandcup"
+NAME="wiki"
+SLUG="wiki"
+DESC="Wiki"
 
 ##########################
 

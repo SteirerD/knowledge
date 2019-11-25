@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package GLC
+ * @package WIKI
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package GLC
+ * @package wiki
  */
 
 ?>
@@ -14,14 +14,14 @@
 		<?php the_title( '<h1 class="c-entry__header-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php glc_post_thumbnail(); ?>
+	<?php wiki_post_thumbnail(); ?>
 
 	<div class="c-entry__content">
 		<?php
 		the_content();
 
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Seiten:', 'glc' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Seiten:', 'wiki' ),
 			'after'  => '</div>',
 		) );
 		?>
@@ -34,7 +34,7 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Bearbeite <span class="screen-reader-text">%s</span>', 'glc' ),
+						__( 'Bearbeite <span class="screen-reader-text">%s</span>', 'wiki' ),
 						array(
 							'span' => array(
 								'class' => array(),

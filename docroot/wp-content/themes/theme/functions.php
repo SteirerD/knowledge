@@ -1,13 +1,13 @@
 <?php
   /**
-   * GLC functions and definitions
+   * wiki functions and definitions
    *
    * @link https://developer.wordpress.org/themes/basics/theme-functions/
    *
-   * @package GLC
+   * @package wiki
    */
   
-  if ( !function_exists( 'glc_setup' ) ) :
+  if ( !function_exists( 'wiki_setup' ) ) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.
      *
@@ -15,14 +15,14 @@
      * runs before the init hook. The init hook is too late for some features, such
      * as indicating support for post thumbnails.
      */
-    function glc_setup() {
+    function wiki_setup() {
       /*
        * Make theme available for translation.
        * Translations can be filed in the /languages/ directory.
-       * If you're building a theme based on GLC, use a find and replace
-       * to change 'glc' to the name of your theme in all the template files.
+       * If you're building a theme based on wiki, use a find and replace
+       * to change 'wiki' to the name of your theme in all the template files.
        */
-      load_theme_textdomain( 'glc', get_template_directory() . '/languages' );
+      load_theme_textdomain( 'wiki', get_template_directory() . '/languages' );
       
       // Add default posts and comments RSS feed links to head.
       add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@
       
       // This theme uses wp_nav_menu() in one location.
       register_nav_menus( array(
-                            'mainmenu' => esc_html__( 'Hauptmenü', 'glc' ),
+                            'mainmenu' => esc_html__( 'Hauptmenü', 'wiki' ),
                           ) );
       
       /*
@@ -60,7 +60,7 @@
       ) );
       
       // Set up the WordPress core custom background feature.
-      add_theme_support( 'custom-background', apply_filters( 'glc_custom_background_args', array(
+      add_theme_support( 'custom-background', apply_filters( 'wiki_custom_background_args', array(
         'default-color' => 'ffffff',
         'default-image' => '',
       ) ) );
@@ -81,7 +81,7 @@
       ) );
     }
   endif;
-  add_action( 'after_setup_theme', 'glc_setup' );
+  add_action( 'after_setup_theme', 'wiki_setup' );
   
   /**
    * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -90,25 +90,25 @@
    *
    * @global int $content_width
    */
-  function glc_content_width() {
+  function wiki_content_width() {
     // This variable is intended to be overruled from themes.
     // Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
     // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-    $GLOBALS['content_width'] = apply_filters( 'glc_content_width', 640 );
+    $GLOBALS['content_width'] = apply_filters( 'wiki_content_width', 640 );
   }
   
-  add_action( 'after_setup_theme', 'glc_content_width', 0 );
+  add_action( 'after_setup_theme', 'wiki_content_width', 0 );
   
   /**
    * Register widget area.
    *
    * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
    */
-  function glc_widgets_init() {
+  function wiki_widgets_init() {
     register_sidebar( array(
-                        'name' => esc_html__( 'Sidebar', 'glc' ),
+                        'name' => esc_html__( 'Sidebar', 'wiki' ),
                         'id' => 'sidebar-1',
-                        'description' => esc_html__( 'Widgets hier einfügen', 'glc' ),
+                        'description' => esc_html__( 'Widgets hier einfügen', 'wiki' ),
                         'before_widget' => '<section id="%1$s" class="widget %2$s">',
                         'after_widget' => '</section>',
                         'before_title' => '<h2 class="widget-title">',
@@ -116,27 +116,27 @@
                       ) );
   }
   
-  add_action( 'widgets_init', 'glc_widgets_init' );
+  add_action( 'widgets_init', 'wiki_widgets_init' );
   
   /**
   /**
    * Enqueue scripts and styles.
    */
-  function glc_scripts() {
-    wp_enqueue_style( 'glc-style', get_stylesheet_uri() );
-    wp_enqueue_style( 'glc-style', get_template_directory_uri() . '/assets/css/slick.css' );
-    wp_enqueue_style( 'glc-style', get_template_directory_uri() . '/assets/css/slick-theme.css' );
+  function wiki_scripts() {
+    wp_enqueue_style( 'wiki-style', get_stylesheet_uri() );
+    wp_enqueue_style( 'wiki-style', get_template_directory_uri() . '/assets/css/slick.css' );
+    wp_enqueue_style( 'wiki-style', get_template_directory_uri() . '/assets/css/slick-theme.css' );
     
-    wp_enqueue_script( 'glc-main', get_template_directory_uri() . '/assets/js/main.js', array(), '20151215', true );
+    wp_enqueue_script( 'wiki-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '20151215', true );
     
-    //wp_enqueue_script( 'glc-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
+    //wp_enqueue_script( 'wiki-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
     
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );
     }
   }
   
-  add_action( 'wp_enqueue_scripts', 'glc_scripts' );
+  add_action( 'wp_enqueue_scripts', 'wiki_scripts' );
   
   /**
    * Implement the Custom Header feature.

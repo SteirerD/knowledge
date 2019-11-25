@@ -180,7 +180,7 @@
     
         $field_definition = array (
           'key' => $new_key,
-          'label' => __( $label, 'glc' ),
+          'label' => __( $label, 'wiki' ),
           'name' => $this->groupSlug . $name,
           'type' => $type
         );

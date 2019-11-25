@@ -1,3 +1,21 @@
 .c-main-header {
+  @include flexbox();
+}
 
+.c-main-navigation ul {
+  @include flexbox();
+  @include align-items(center);
+  list-style: none;
+  margin: 0;
+}
+.c-main-navigation ul li {
+  padding: 0 10px;
+
+  &:last-child {
+    padding:0 0 0 10px;
+  }
+
+  &:first-child {
+    padding: 0 10px 0 0;
+  }
 }

@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package GLC
+ * @package wiki
  */
 
 get_header();
@@ -14,7 +14,7 @@ get_header();
 
     <section class="c-error-404">
       <div class="l-container l-container--no-padding">
-        <h1 class="c-error-404__headline"><?php _e('Die gesuchte Seite wurde leider nicht gefunden.', 'glc'); ?></h1>
+        <h1 class="c-error-404__headline"><?php _e('Die gesuchte Seite wurde leider nicht gefunden.', 'wiki'); ?></h1>
       </div>
     </section>
 
