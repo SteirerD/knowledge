@@ -18,7 +18,7 @@ get_header();
   <main class="c-main-site__content-area c-main-site__content-area--archive">
 
     <section class="c-archive c-archive--<?php echo get_post_type(); ?>">
-      
+      <div class="grid-sizer"></div>
       <?php if ( have_posts() ) : ?>
         
         <?php

@@ -31,7 +31,7 @@
 
 	<?php wiki_post_thumbnail(); ?>
 
-	<div class="c-entry__content">
+	<div class="c-entry__content c-wysiwyg">
 		<?php
 		the_content( __('Weiterlesen') );
 

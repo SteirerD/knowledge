@@ -15,7 +15,7 @@
   left: 0.1875em;
   width: 0.8125em;
   height: 0.8125em;
-  background: url('assets/img/check.svg') no-repeat center center;
+  background: url('assets/img/list.png') no-repeat center center;
   background-size: 100%;
 }
 
@@ -29,4 +29,15 @@
 
 .c-wysiwyg > *:last-child {
   margin-bottom: 0;
+}
+
+.grid-sizer {
+  width:33%;
+}
+
+article {
+  width: calc(30% - 10px);
+  padding:50px;
+  border: 1px solid getColor('red');
+  margin: 5px;
 }

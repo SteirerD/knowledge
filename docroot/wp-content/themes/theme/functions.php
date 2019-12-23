@@ -126,14 +126,26 @@
     wp_enqueue_style( 'wiki-style', get_stylesheet_uri() );
     wp_enqueue_style( 'wiki-style', get_template_directory_uri() . '/assets/css/slick.css' );
     wp_enqueue_style( 'wiki-style', get_template_directory_uri() . '/assets/css/slick-theme.css' );
-    
-    wp_enqueue_script( 'wiki-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '20151215', true );
+//    wp_enqueue_script( 'wiki-isotope', get_template_directory_uri() . '/assets/js/isotope.pkgd.min.js', array('jquery') );
+    wp_enqueue_script( 'querystring-js', get_template_directory_uri() . '/assets/js/query-string.js', array('jquery'), false, true );
     
     //wp_enqueue_script( 'wiki-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
+    wp_enqueue_script( 'bodyscrolllock-js', get_template_directory_uri() . '/assets/js/bodyScrollLock.min.js', array('jquery'), false, true );
+  
+  
+    wp_enqueue_script( 'wiki-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '20151215', true );
     
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );
     }
+  
+    $php_array = array(
+      'home_url' => get_home_url(),
+      'ajax_url' => admin_url( 'admin-ajax.php?lang=' . ICL_LANGUAGE_CODE),
+      'templateurl' => get_template_directory_uri(),
+      'posts_per_page' => get_option( 'posts_per_page' )
+    );
+    wp_localize_script( 'wiki-main', 'php_array', $php_array );
   }
   
   add_action( 'wp_enqueue_scripts', 'wiki_scripts' );
@@ -155,6 +167,11 @@
   //comment
   
   /**
+   * Custom handler for ajax request
+   */
+  require get_template_directory() . '/inc/ajax-handler.php';
+  
+  /**
    * Helpers
    */
   require get_template_directory() . '/inc/classes/helpers/PHPHelper.class.php';
@@ -171,3 +188,14 @@
   require get_template_directory() . '/inc/classes/VCElement.class.php';
 
   WPFunctionsHelper::sanitizeUploadFilenames();
+  
+  
+  
+  
+  /**
+   * Add modals before closing body tag
+   */
+  function wiki_add_modals() {
+    get_template_part( 'template-parts/modals' );
+  }
+  add_action( 'wp_footer', 'wiki_add_modals' );

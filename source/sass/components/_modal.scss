@@ -1,0 +1,214 @@
+.c-modal {
+	position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 135px 0 50px;
+  z-index: 2000000;
+  visibility: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  text-align: center;
+  white-space: nowrap;
+  @include transition(visibility .4s ease .4s);
+
+ 	@include media-breakpoint('l') {
+  	padding: 85px 0 30px;
+	}
+}
+
+.c-modal:after {
+	white-space: nowrap;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 100%;
+  z-index: -1;
+  margin-right: -.25em;
+}
+
+.c-modal__backdrop {
+	position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.7);
+  opacity: 0;
+  @include transition(opacity .4s);
+}
+
+.c-modal.is-visible .c-modal__backdrop {
+	opacity: 1;
+}
+
+.c-modal__dialog {
+	display: inline-block;
+	width: 100%;
+  max-width: 510px;
+  margin: 0 auto;
+  opacity: 0;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+	@include transform(translate(0,50px) scale(.5));
+	@include transition(all .3s);
+}
+
+.c-modal--large .c-modal__dialog {
+  max-width: 850px;
+}
+
+.c-modal.is-visible {
+	visibility: visible;
+  @include transition(none);
+}
+
+.c-modal.is-visible .c-modal__dialog {
+	opacity: 1;
+	@include transform(translate(0,0) scale(1));
+}
+
+.c-modal__content {
+  position: relative;
+  margin: 0 10px;
+  background: #fff;
+  outline: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,.5);
+}
+
+.c-modal__header {
+  margin: 0;
+  padding: 48px 85px 12px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+
+ 	@include media-breakpoint('l') {
+  	padding: 48px 45px 12px;
+	}
+
+ 	@include media-breakpoint('m') {
+  	padding: 48px 20px 12px;
+	}
+
+ 	@include media-breakpoint('xs') {
+  	padding: 48px 10px 12px;
+	}
+}
+
+.c-modal__body {
+  padding: 14px 85px 40px;
+  margin: 0;
+
+ 	@include media-breakpoint('l') {
+  	padding: 14px 45px 40px;
+	}
+
+ 	@include media-breakpoint('l') {
+  	padding: 14px 20px 40px;
+	}
+
+ 	@include media-breakpoint('xs') {
+  	padding: 14px 10px 40px;
+	}
+}
+
+.c-modal__response {
+	display: none;
+  padding: 8px 85px;
+  margin: 0;
+  background: #f2f2f2;
+  font-weight: 700;
+  @include font-size(.75);
+}
+
+.c-modal__response.is-error {
+	color: getColor('light-black');
+}
+
+.c-modal__response.is-success {
+	color: #4bb543;
+}
+
+.c-modal__form.is-not-active {
+	opacity: .2;
+}
+
+.c-modal__form-submit-container {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.c-modal__text {
+	margin-bottom: 30px;
+}
+
+.c-modal__controls {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.c-modal__close {
+	position: absolute;
+  top: 0;
+  right: 0;
+  width: 53px;
+  height: 53px;
+  z-index: 8;
+  border-radius: 0;
+  border: none;
+  padding: 20px;
+  background: transparent;
+}
+
+.c-modal__close svg {
+	display: block;
+	width: 13px;
+	height: auto;
+}
+
+.c-modal__close svg path {
+	@include transition(all .2s);
+}
+
+.c-modal__close:hover svg path,
+.c-modal__close:focus svg path {
+	fill: getColor('light-black');
+}
+
+.c-modal__form label {
+	display: block;
+	@include font-size(.75);
+}
+
+.c-modal__notes {
+	margin-top: 4px;
+	text-align: center;
+	@include font-size(.875);
+}
+
+.c-modal__footer {
+	display: none;
+	padding: 30px 85px 35px;
+	border-top: 1px solid rgba(0,0,0,0.5);
+
+ 	@include media-breakpoint('l') {
+  	padding: 30px 45px 35px;
+	}
+
+ 	@include media-breakpoint('l') {
+  	padding: 30px 20px 35px;
+	}
+
+ 	@include media-breakpoint('xs') {
+  	padding: 30px 10px 35px;
+	}
+}
+
+.c-modal__trigger-footer-link {
+	font-weight: 400;
+}

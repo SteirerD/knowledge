@@ -28,6 +28,7 @@ gulp.task('js', function() {
     './source/js/skip-link-focus-fix.js',
     './source/js/main.js',
     './source/js/slick.min.js',
+    './source/js/isotope.pkgd.min.js',
   ])
     .pipe(concat('main.js'))
     .pipe(minify())
