@@ -1,6 +1,5 @@
 .c-main-site {
   min-height: 100vh;
-  overflow: hidden;
   @include flexbox;
   @include flex-direction(column);
 }

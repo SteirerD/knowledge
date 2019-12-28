@@ -26,6 +26,10 @@ ul > li.list-item-white:before {
   background: url('assets/img/th-list-solid-white.svg') no-repeat center center;
 }
 
+ul > .c-posts__categories__ul-li:before {
+  background: url('assets/img/bookmark-solid.svg') no-repeat center center;
+}
+
 .c-wysiwyg a {
   text-decoration: underline;
 }

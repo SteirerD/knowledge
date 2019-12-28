@@ -38,6 +38,11 @@
   }
 }
 
+.o-button--small {
+  height: 30px;
+  padding: 6px 16px;
+}
+
 .o-button--bordered {
   padding: 8px 11px;
   background: getColor('white');

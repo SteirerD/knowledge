@@ -229,8 +229,10 @@
   ) );
   
   
-  // ============= GB-Blöcke =============
+  // ============= Gutenberg-Blöcke ====================================================================================
   
+  
+  // ============= Top Categories =============
   $block_top_categories_fieldgroup = new AcfFieldGroup( 'top_cat_', 'Top Categories', 'block', 'acf/topcategories' );
   
   $block_top_categories_fieldgroup->addField( 'true_false', __('zeige die neuesten Kategorien', 'wiki'), 'private', array(
@@ -238,6 +240,13 @@
   ) );
   $block_top_categories_fieldgroup->addField( 'text', __('Anzahl der gezeigten Kategorien', 'wiki'), 'cat_count', array(
     'instructions' => __( 'Anzahl der Kategorien die angezeigt werden sollen.', 'wiki' ),
+  ) );
+  
+  // ============= Posts =============
+  $block_posts_fieldgroup = new AcfFieldGroup( 'posts_', 'Posts', 'block', 'acf/posts' );
+  
+  $block_posts_fieldgroup->addField( 'text', __('Anzahl der gezeigten Posts', 'wiki'), 'posts_count', array(
+    'instructions' => __( 'Anzahl der Beiträge die initial angezeigt werden.', 'wiki' ),
   ) );
   
   // ============= BLOG =============

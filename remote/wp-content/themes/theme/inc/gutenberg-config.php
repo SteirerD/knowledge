@@ -15,6 +15,7 @@ add_filter( 'block_categories', 'wiki_block_category', 10, 2 );
 
 require get_template_directory() . '/inc/blocks/gb_button.php';
 require get_template_directory() . '/inc/blocks/gb_topcategories.php';
+require get_template_directory() . '/inc/blocks/gb_posts.php';
 
 function acf_block_render_callback( $block ) {
   // convert name ("acf/testimonial") into path friendly slug ("testimonial")
