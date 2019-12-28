@@ -6,11 +6,9 @@
   padding-bottom: 5px;
   @include flexbox();
   @include align-items(center);
+  @include justify-content(space-between);
 }
 
-.c-main-header__logo {
-  flex:1;
-}
 
 .c-main-header__logo-img {
   max-width:65px ;
@@ -60,4 +58,37 @@
 
 .c-main-header__nav-trigger:hover .c-main-header__nav-trigger-bar {
   width: 100%;
+}
+
+.c-user-login,
+.c-add-post {
+  padding-right: 20px;
+  position: relative;
+}
+
+.c-user-login__svg,
+.c-user-logout__svg,
+.c-add-post__svg {
+  height: 100%;
+  width: 30px;
+}
+
+.c-user-logout__svg {
+  cursor: pointer;
+}
+
+.c-user-login__link,
+.c-user-logout__link,
+.c-add-post__link {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.c-navbar-right {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
 }

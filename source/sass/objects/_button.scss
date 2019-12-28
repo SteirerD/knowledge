@@ -11,7 +11,7 @@
   user-select: none;
   border-radius: 0;
   -webkit-tap-highlight-color: transparent;
-  background: getColor("green");
+  background: getColor("light-black");
   color: getColor("white");
   text-overflow: ellipsis;
   overflow: hidden;
@@ -34,7 +34,7 @@
 
   &:hover,
   &:focus {
-    background: darken(getColor("green"), 5%);
+    background: darken(getColor("grey"), 5%);
   }
 }
 

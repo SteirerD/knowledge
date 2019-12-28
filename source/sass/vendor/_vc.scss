@@ -139,13 +139,13 @@ $col-paddings: 15 30 45 60;
 }
 
 /*.vc-column-container.col-order-1 {
-  @include respond-to('m') {
+  @include media-breakpoint('m') {
     @include order(1);
   }
 }
 
 .vc-column-container.col-order-2 {
-  @include respond-to('m') {
+  @include media-breakpoint('m') {
     @include order(2);
   }
 }*/

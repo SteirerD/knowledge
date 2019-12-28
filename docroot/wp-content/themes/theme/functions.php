@@ -138,10 +138,12 @@
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );
     }
+    
+    
   
     $php_array = array(
       'home_url' => get_home_url(),
-      'ajax_url' => admin_url( 'admin-ajax.php?lang=' . ICL_LANGUAGE_CODE),
+      'ajax_url' => admin_url( 'admin-ajax.php?'),
       'templateurl' => get_template_directory_uri(),
       'posts_per_page' => get_option( 'posts_per_page' )
     );
@@ -171,6 +173,20 @@
    */
   require get_template_directory() . '/inc/ajax-handler.php';
   
+  
+  /**
+   * Gutenberg Blocks.
+   */
+  require get_template_directory() . '/inc/gutenberg-config.php';
+  
+  /**
+   * Gutenberg Styling.
+   */
+  function _s_acf_enqueue_backend_block_styles() {
+    wp_enqueue_style( 'wds-gutenberg-blocks', get_template_directory_uri() . '/gutenberg-blocks-style.css', array(), '1.0.0' );
+  }
+  add_action('admin_enqueue_scripts', '_s_acf_enqueue_backend_block_styles');
+  
   /**
    * Helpers
    */
@@ -189,9 +205,6 @@
 
   WPFunctionsHelper::sanitizeUploadFilenames();
   
-  
-  
-  
   /**
    * Add modals before closing body tag
    */
@@ -199,3 +212,40 @@
     get_template_part( 'template-parts/modals' );
   }
   add_action( 'wp_footer', 'wiki_add_modals' );
+  
+  
+  
+  /**
+  * ========================================
+  *             ACF FIELD GROUPS
+  * ========================================
+   */
+  // ============= BLOG =============
+  
+  $blog_fieldgroup = new AcfFieldGroup( 'blog_', 'Blog', 'taxonomy', 'category' );
+  
+  $blog_fieldgroup->addField( 'true_false', __('private Kategorie', 'wiki'), 'private', array(
+    'instructions' => __( 'Kategorie ist nur für eingeloggte User sichtbar', 'wiki' ),
+  ) );
+  
+  
+  // ============= GB-Blöcke =============
+  
+  $block_top_categories_fieldgroup = new AcfFieldGroup( 'top_cat_', 'Top Categories', 'block', 'acf/topcategories' );
+  
+  $block_top_categories_fieldgroup->addField( 'true_false', __('zeige die neuesten Kategorien', 'wiki'), 'private', array(
+    'instructions' => __( 'Es werden die neuesten Kategorien angezeigt.', 'wiki' ),
+  ) );
+  $block_top_categories_fieldgroup->addField( 'text', __('Anzahl der gezeigten Kategorien', 'wiki'), 'cat_count', array(
+    'instructions' => __( 'Anzahl der Kategorien die angezeigt werden sollen.', 'wiki' ),
+  ) );
+  
+  // ============= BLOG =============
+  
+  $button_fieldgroup = new AcfFieldGroup( 'button_', 'Button', 'block', 'acf/button' );
+  
+  $button_fieldgroup->addField( 'link', 'Button-link', 'btn_link', array(
+    'instructions' => __( 'Link', 'spl' ),
+  ) );
+  
+  

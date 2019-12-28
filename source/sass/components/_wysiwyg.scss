@@ -1,13 +1,16 @@
-.c-wysiwyg ul {
+.c-wysiwyg ul,
+ul {
   list-style: none;
 }
 
-.c-wysiwyg ul > li {
+.c-wysiwyg ul > li,
+ul > li {
   position: relative;
   padding-left: 1.5em;
 }
 
-.c-wysiwyg ul > li:before {
+.c-wysiwyg ul > li:before,
+ul > li:before {
   content: '';
   display: block;
   position: absolute;
@@ -15,8 +18,12 @@
   left: 0.1875em;
   width: 0.8125em;
   height: 0.8125em;
-  background: url('assets/img/list.png') no-repeat center center;
+  background: url('assets/img/th-list-solid.svg') no-repeat center center;
   background-size: 100%;
+}
+
+ul > li.list-item-white:before {
+  background: url('assets/img/th-list-solid-white.svg') no-repeat center center;
 }
 
 .c-wysiwyg a {

@@ -90,6 +90,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "objects/button";
 @import "objects/input";
 @import "objects/link";
+@import "objects/select";
+@import "objects/checkbox";
 
 /*--------------------------------------------------------------
 # Components
@@ -99,8 +101,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "components/main-site";
 @import "components/wysiwyg";
 @import "components/modal";
+@import "components/topcategories";
+@import "components/search";
+
 
 /*--------------------------------------------------------------
 # Vendor
 --------------------------------------------------------------*/
 @import "vendor/vc";
+@import "vendor/gutenberg";

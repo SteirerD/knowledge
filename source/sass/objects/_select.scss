@@ -1,0 +1,73 @@
+.o-select {
+	position: relative;
+	margin-bottom: 10px;
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 11px;
+	}
+}
+
+.o-select__arrow {
+	position: absolute;
+  top: 14px;
+  right: 10px;
+  width: 16px;
+ 	pointer-events: none;
+}
+
+.o-select__arrow svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.o-select__select {
+  display: block;
+  width: 100%;
+  padding: 3px 34px;
+	color: getColor('light-grey');
+  border: 2px solid #000;
+  background: white;
+  border-radius: 0;
+  font-weight: 400;
+  text-align: center;
+  text-align: -webkit-center;
+  text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &:focus {
+	  outline: none;
+  }
+}
+
+.o-select.is-not-empty .o-select__select {
+	color: getColor('light-black');
+}
+
+.o-select__select + .o-select__label {
+  position: absolute;
+  top: -7px;
+  left: 8px;
+  padding: 0 2px;
+  opacity: 0;
+  font-weight: 400;
+  background: #fff;
+  @include font-size(.625);
+	@include transition(left .4s, opacity .4s);
+}
+
+.o-select.is-not-empty .o-select__select + .o-select__label {
+  left: 4px;
+  opacity: 1;
+}
+
+.o-input.is-error .o-select__select {
+	border-color: getColor('light-black');
+}

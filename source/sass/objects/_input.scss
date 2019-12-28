@@ -1,3 +1,56 @@
 .o-input {
+	position: relative;
+	margin-bottom: 10px;
+}
 
+.o-input__field {
+  width: 100%;
+	border: none;
+	border-radius: 0;
+	padding: 3px 10px;
+	background: #fff;
+	color: getColor('light-black');
+	font-weight: 400;
+	border: 2px solid #000;
+	text-align: center;
+	-webkit-appearance: none;
+	appearance: none;
+
+	&:focus {
+  	outline: none;
+	}
+}
+
+.o-input__field[readonly] {
+	opacity: .2;
+	pointer-events: none;
+}
+
+.o-input.is-error .o-input__field {
+	border-color: getColor('light-black');
+}
+
+.o-input--floating-label {
+	margin-bottom: 10px;
+}
+
+.o-input--noborder .o-input__field {
+	border-color: #fff;
+}
+
+.o-input--floating-label .o-input__field + .o-input__label {
+  position: absolute;
+  top: -7px;
+  left: 8px;
+  padding: 0 2px;
+  opacity: 0;
+  font-weight: 400;
+  background: #fff;
+  @include font-size(.625);
+	@include transition(left .4s, opacity .4s);
+}
+
+.o-input--floating-label.is-not-empty .o-input__field + .o-input__label {
+  left: 4px;
+  opacity: 1;
 }

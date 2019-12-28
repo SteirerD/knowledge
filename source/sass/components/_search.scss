@@ -1,0 +1,18 @@
+.c-search {
+  background-image: url(assets/img/backgr_search.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 200px;
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+.c-search .search-field {
+  border:1px solid getColor('light-black');
+  border-radius: 20px;
+  padding: 10px 20px;
+  min-width: 500px;
+  outline: none;
+}
