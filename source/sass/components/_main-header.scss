@@ -92,3 +92,29 @@
   @include justify-content(center);
   @include align-items(center);
 }
+
+.c-add-post__tooltip,
+.c-user-login__tooltip-login,
+.c-user-login__tooltip-logout {
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.c-add-post:hover .c-add-post__tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.c-user-login:hover .c-user-login__tooltip-logout {
+  opacity: 1;
+  visibility: visible;
+}
+
+.c-user-login:hover .c-user-login__tooltip-login {
+  opacity: 1;
+  visibility: visible;
+}
