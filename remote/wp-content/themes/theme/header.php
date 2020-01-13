@@ -74,7 +74,7 @@
       </div>
     </div>
     
-    <div class="c-search">
+    <div class="c-search-form">
       <?php get_search_form(); ?>
     </div>
 

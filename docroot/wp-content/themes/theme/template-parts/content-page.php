@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('c-entry c-entry--page'); ?>>
-	<header class="c-entry__header">
+	<header class="c-entry__header dse">
 		<?php the_title( '<h1 class="c-entry__header-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 

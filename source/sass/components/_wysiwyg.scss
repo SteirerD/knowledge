@@ -22,7 +22,7 @@ ul > li:before {
   background-size: 100%;
 }
 
-ul > li.list-item-white:before {
+ul.list-item-white >li:before {
   background: url('assets/img/th-list-solid-white.svg') no-repeat center center;
 }
 
@@ -47,8 +47,4 @@ ul > .c-posts__categories__ul-li:before {
 }
 
 article {
-  width: calc(30% - 10px);
-  padding:50px;
-  border: 1px solid getColor('red');
-  margin: 5px;
 }

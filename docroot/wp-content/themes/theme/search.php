@@ -15,16 +15,16 @@ get_header();
     <section class="c-search">
   
       <?php if ( have_posts() ) : ?>
-
+      <div class="l-container">
         <header class="c-search__header">
-          <h1 class="c-search__header-title">
-            <?php
-              /* translators: %s: search query. */
-              printf( esc_html__( 'Suchergebnisse für: %s', 'wiki' ), '<span>' . get_search_query() . '</span>' );
-            ?>
-          </h1>
+            <h1 class="c-search__header-title">
+              <?php
+                /* translators: %s: search query. */
+                printf( esc_html__( 'Suchergebnisse für: %s', 'wiki' ), '<span>' . get_search_query() . '</span>' );
+              ?>
+            </h1>
         </header><!-- .page-header -->
-    
+        <div class="c-posts__posts-outer-wrapper">
         <?php
         /* Start the Loop */
         while ( have_posts() ) :
@@ -35,6 +35,15 @@ get_header();
            * If you want to overload this in a child theme then include a file
            * called content-search.php and that will be used instead.
            */
+          
+          //don´t show results which contain at least one private category
+          $contains_private_cat = false;
+          $cats = get_the_category();
+          foreach ($cats as $cat) {
+            if(get_field( 'blog_private', $cat))
+            $contains_private_cat = true;
+          }
+          if( is_user_logged_in() || ! $contains_private_cat )
           get_template_part( 'template-parts/content', 'search' );
     
         endwhile;
@@ -48,11 +57,11 @@ get_header();
       endif;
       ?>
 
-
+        </div>
+      </div>
     </section>
 
   </main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

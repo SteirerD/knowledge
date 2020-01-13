@@ -1,4 +1,4 @@
-.c-search {
+.c-search-form {
   background-image: url(assets/img/backgr_search.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -9,10 +9,26 @@
   @include align-items(center);
 }
 
-.c-search .search-field {
+.c-search-form .search-field {
   border:1px solid getColor('light-black');
   border-radius: 20px;
   padding: 10px 20px;
   min-width: 500px;
   outline: none;
+}
+
+.c-search__header {
+  margin-top: 60px;
+}
+
+.c-search .c-posts__posts-outer-wrapper {
+  margin-top: 20px;
+}
+
+.c-search article {
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

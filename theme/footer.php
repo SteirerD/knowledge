@@ -14,13 +14,20 @@
 	</div><!-- #content -->
 
   <footer class="c-main-footer">
-    <div class="l-container">
-      <div class="c-main-footer__nav">
+    <div class="l-container c-main-footer__wrapper">
+      <div class="c-main-header__logo">
+        <a class="c-main-header__link-wrapper" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+          <img class="c-main-header__logo-img"
+               src="<?php echo get_template_directory_uri() ?>/assets/img/book-open-solid-white.svg">
+          <div class="c-main-header__Title"><?php _e( 'Daniel´s Enzyklopädie des Wissens', 'wiki' ) ?></div>
+        </a>
+      </div>
+      <div class="c-main-footer__nav ">
         <?php
           wp_nav_menu( array(
-                         'theme_location' => 'main-footer',
+                         'theme_location' => 'footermenu',
                          'container' => false,
-                         'menu_class' => 'c-main-footer__nav-ul',
+                         'menu_class' => 'c-main-footer__nav-ul list-item-white',
                          'depth' => 1,
                        ) );
         ?>

@@ -18,12 +18,15 @@
     <div class="c-single-post__inner">
       
       <header class="c-single-post__header">
-        <div class="c-single-post__date">
-          <?php echo get_the_author_meta('first_name'), ' ', get_the_author_meta('last_name'),', ';?>
-          <?php echo date_i18n( get_option( 'date_format' ), get_the_time( 'U' ) ); ?>
-        </div>
         <h1 class="c-single-post__title"><?php the_title(); ?></h1>
       </header>
+      <div class="c-posts__categories"><?php
+          $cats = get_the_category();
+          foreach ( $cats as $cat ) {
+            echo '<a class="c-posts__categories-category" href="' . get_term_link( $cat->term_id ) . '">' . $cat->name . '</a>';
+          }
+        ?>
+      </div>
       
       <div class="c-single-post__content">
         <?php the_content();?>

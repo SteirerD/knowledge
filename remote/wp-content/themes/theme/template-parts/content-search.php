@@ -10,26 +10,17 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('c-entry c-entry--search'); ?>>
-	<header class="c-entry__header">
-		<?php the_title( sprintf( '<h2 class="c-entry__header--title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+  <div class="c-posts__post-wrapper">
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="c-entry__header-meta">
-			<?php
-			wiki_posted_on();
-			wiki_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php wiki_post_thumbnail(); ?>
-
-	<div class="c-entry__summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="c-entry__footer">
-		<?php wiki_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+    <h3 class="c-posts__heading"><?php echo the_title() ?></h3>
+    <div class="c-posts__categories"><?php
+        $cats = get_the_category();
+        foreach ( $cats as $cat ) {
+          echo '<a class="c-posts__categories-category" href="' . get_term_link( $cat->term_id ) . '">' . $cat->name . '</a>';
+        }
+      ?>
+    </div>
+    <div class="c-posts__excerpt"><?php echo the_excerpt(); ?></div>
+    <a class="o-button o-button--small" href="<?php echo get_the_permalink()?>"><?php _e('mehr erfahren', 'wiki') ?></a>
+  </div>
 </article><!-- #post-<?php the_ID(); ?> -->

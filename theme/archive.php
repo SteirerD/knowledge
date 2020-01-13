@@ -16,6 +16,9 @@ get_header();
   
       <?php if ( have_posts() ) : ?>
 
+        <?php
+        $page_id = get_queried_object_id();
+        var_dump(get_field('blog_private', get_category($page_id)));?>
         <header class="c-page-header">
           <?php
             the_archive_title( '<h1 class="c-page-header__title">', '</h1>' );

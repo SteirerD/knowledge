@@ -39,10 +39,10 @@
       <div class="c-topcategories_block_outerwrapper l-col l-col-4">
         <div class="c-topcategories_block_innerwrapper">
           <?php echo '<h3 class="c-topcategories__category">'.$categories[$i]->name.'</h3>';
-          echo '<ul class="c-topcategories__category-list">';
+          echo '<ul class="c-topcategories__category-list list-item-white">';
           if ( $blog_query->have_posts() ) :
             while ( $blog_query->have_posts() ) : $blog_query->the_post();
-            echo '<li class="c-topcategories__blog-title list-item-white">'.get_the_title().'';
+            echo '<li class="c-topcategories__blog-title">'.get_the_title().'';
             echo '<a class="c-topcategories__blog-title-link" href="'.get_the_permalink().'"></a>';
             echo '<div class="c-topcategories__blog-title-preview" style="opacity: 0; visibility: hidden">';
             echo the_excerpt();

@@ -1,3 +1,19 @@
 .c-main-footer {
+  margin-top:60px;
+  padding: 20px 0;
+  background-color: getColor('light-black');
+}
 
+.c-main-footer__wrapper {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+}
+
+.c-main-footer .c-main-header__Title {
+  color: getColor('white');
+}
+
+.c-main-footer__nav {
+  color: getColor('white');
 }
