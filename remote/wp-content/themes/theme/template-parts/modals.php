@@ -95,16 +95,19 @@
             </div>
             
             <?php
-              $categories = get_categories();
+              $args = array(
+                'hide_empty' => 0,
+              );
+              $categories = get_categories($args);
               
               foreach ($categories as $category):
-                if ( is_user_logged_in() ||  ! get_field('blog_private', $category)): ?>
-                <div class="l-col l-col-6">
-                  <div class="o-checkbox">
-                    <input class="o-checkbox__input" type="checkbox" name="add-post-<?php echo $category->slug ?>" id="add-post-<?php echo $category->slug ?>" value="1" required>
-                    <label class="o-checkbox__label" for="add-post-<?php echo $category->slug ?>"><?php echo $category->name ?>
-                  </div>
-                </div>
+                if ( is_user_logged_in() ||  ! get_field('blog_private', $category)):?>
+                    <div class="l-col l-col-6">
+                      <div class="o-checkbox">
+                        <input class="o-checkbox__input" type="checkbox" name="add-post-<?php echo $category->slug ?>" id="add-post-<?php echo $category->slug ?>" value="1" required>
+                        <label class="o-checkbox__label" for="add-post-<?php echo $category->slug ?>"><?php echo $category->name ?>
+                      </div>
+                    </div>
             <?php
                endif;
               endforeach;

@@ -79,18 +79,6 @@
     </div>
 
 
-    <!--      <nav id="site-navigation" class="c-main-navigation">-->
-<!--        --><?php
-//          wp_nav_menu( array(
-//                         'theme_location'   => 'mainmenu',
-//                         'menu_id'          => 'primary-menu',
-//                         'container_class'  => 'c-main-navigation__menu-container',
-//                         'menu_class'       => 'c-main-navigation__menu'
-//                       ) );
-//        ?>
-<!--      </nav>
-    </div>
-
-	</header><!-- #masthead -->
+	</header>
 
 	<div id="content" class="c-main-site__content">
