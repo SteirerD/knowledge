@@ -259,3 +259,45 @@
   ) );
   
   
+  
+  function print_scripts_styles() {
+    
+    $result = [];
+    $result['scripts'] = [];
+    $result['styles'] = [];
+    
+    global $wp_scripts;
+    foreach( $wp_scripts->queue as $script ) :
+      $result['scripts'][] =  $wp_scripts->registered[$script]->src . ";";
+    endforeach;
+    
+    global $wp_styles;
+    foreach( $wp_styles->queue as $style ) :
+      $result['styles'][] =  $wp_styles->registered[$style]->src . ";";
+    endforeach;
+    
+    return $result;
+  }
+  
+  //add_action( 'wp_head', 'get_all_scripts');
+  
+  function get_all_scripts() {
+    $user = wp_get_current_user();
+    if( is_user_logged_in() && $user->user_email == 'daniel.steirer@gmail.com' ) {
+      $all_the_scripts_and_styles = print_scripts_styles();
+//      print_r($all_the_scripts_and_styles);
+      echo '<div class="c-list-scripts">';
+        echo '<ul>';
+          foreach ($all_the_scripts_and_styles as $scripts) {
+            foreach ($scripts as $script) {
+              echo '<li>';
+              var_dump($scripts);
+              echo '</li>';
+            }
+          }
+        echo '</ul';
+      echo '<div>';
+    }
+
+    
+  }

@@ -6,6 +6,7 @@
 
 .c-main-site__content {
   @include flex(1 0 auto);
+  margin-top: 40px;
 }
 
 .c-main-site__content-area {

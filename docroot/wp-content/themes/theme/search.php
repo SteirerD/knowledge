@@ -13,9 +13,9 @@ get_header();
   <main class="c-main-site__content-area c-main-site__content-area--search">
 
     <section class="c-search">
-  
-      <?php if ( have_posts() ) : ?>
       <div class="l-container">
+      <?php if ( have_posts() ) : ?>
+      
         <header class="c-search__header">
             <h1 class="c-search__header-title">
               <?php
