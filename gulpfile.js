@@ -29,6 +29,7 @@ gulp.task('js', function() {
     './source/js/main.js',
     './source/js/slick.min.js',
     './source/js/isotope.pkgd.min.js',
+    './source/js/bodyScrollLock.min.js',
   ])
     .pipe(concat('main.js'))
     .pipe(minify())

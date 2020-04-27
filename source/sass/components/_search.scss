@@ -9,12 +9,20 @@
   @include align-items(center);
 }
 
+.is-sticky .c-search-form {
+  min-height: 50px;
+}
+
 .c-search-form .search-field {
   border:1px solid getColor('light-black');
   border-radius: 20px;
   padding: 10px 20px;
   min-width: 500px;
   outline: none;
+
+  @include media-breakpoint('m') {
+    min-width: 300px;;
+  }
 }
 
 .c-search__header {
@@ -25,7 +33,8 @@
   margin-top: 20px;
 }
 
-.c-search article {
+.c-search article,
+.c-entry--archive {
   margin-bottom: 40px;
 
   &:last-child {

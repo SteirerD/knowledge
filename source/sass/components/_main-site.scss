@@ -2,6 +2,7 @@
   min-height: 100vh;
   @include flexbox;
   @include flex-direction(column);
+  position: relative;
 }
 
 .c-main-site__content {
@@ -9,6 +10,15 @@
   margin-top: 40px;
 }
 
+.is-sticky .c-main-site__content {
+  margin-top: 40px;
+  margin-top: 205px;
+}
+
 .c-main-site__content-area {
   padding: 0 15px;
+}
+
+.archive h1 {
+  margin-bottom: 20px;
 }

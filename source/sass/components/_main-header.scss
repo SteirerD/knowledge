@@ -1,4 +1,18 @@
 .c-main-header {
+  background-color: getColor('white');
+  z-index: 1000;
+}
+
+.is-sticky .c-main-header {
+  position: sticky;
+  top: 0;
+  animation-name: menu_slide;
+  animation-duration: 0.5s;
+  border-bottom: 5px solid getColor('black');
+}
+
+.admin-bar.is-sticky .c-main-header {
+  top: 32px;
 }
 
 .c-main-header__wrapper {
@@ -7,6 +21,10 @@
   @include flexbox();
   @include align-items(center);
   @include justify-content(space-between);
+}
+
+.is-sticky .c-main-header__logo-img {
+  max-width: 35px;
 }
 
 
@@ -22,6 +40,14 @@
 .c-main-header__Title {
   padding-left:20px;
   @include font-size(2);
+
+  @include media-breakpoint('xs') {
+    @include font-size(1);
+  }
+}
+
+.is-sticky .c-main-header__Title {
+  @include font-size(1);
 }
 
 .c-main-header__nav-trigger-wrapper {
@@ -64,6 +90,10 @@
 .c-add-post {
   padding-right: 20px;
   position: relative;
+
+  @include media-breakpoint('xs') {
+    padding-right: 10px;
+  }
 }
 
 .c-user-login__svg,
@@ -71,6 +101,10 @@
 .c-add-post__svg {
   height: 100%;
   width: 30px;
+
+  @include media-breakpoint('xs') {
+    width: 20px;
+  }
 }
 
 .c-user-logout__svg {
@@ -117,4 +151,10 @@
 .c-user-login:hover .c-user-login__tooltip-login {
   opacity: 1;
   visibility: visible;
+}
+
+
+@keyframes menu_slide {
+  from {top: -300px;}
+  to {top: 0;}
 }

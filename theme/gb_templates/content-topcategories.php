@@ -36,7 +36,7 @@
     );
     $blog_query = new WP_Query( $args );
     ?>
-      <div class="c-topcategories_block_outerwrapper l-col l-col-4">
+      <div class="c-topcategories_block_outerwrapper l-col l-col-4 l-col-m-12">
         <div class="c-topcategories_block_innerwrapper">
           <?php echo '<h3 class="c-topcategories__category">'.$categories[$i]->name.'</h3>';
           echo '<ul class="c-topcategories__category-list list-item-white">';

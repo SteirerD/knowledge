@@ -2,7 +2,8 @@
   margin-top: 60px;
 }
 
-.c-posts__posts-outer-wrapper {
+.c-posts__posts-outer-wrapper,
+.c-archive {
   border: 1px solid getColor('grey');
   padding:20px;
   word-break: break-word;
@@ -20,11 +21,11 @@
   padding:20px;
   border: 1px solid getColor('grey');
   position: sticky;
-  top:20px;
+  top:123px;
 }
 
 .admin-bar .c-posts__categories-wrapper {
-  top:40px;
+  top:155px;
 }
 
 .c-posts__categories-heading {

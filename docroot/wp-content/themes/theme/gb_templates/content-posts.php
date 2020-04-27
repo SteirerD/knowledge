@@ -45,7 +45,7 @@
 <div class="c-posts <?php echo esc_attr( $align_class ) ?>">
   <div class="l-container">
     <div class="l-row">
-      <div class="l-col l-col-8">
+      <div class="l-col l-col-8 l-col-m-12">
        <div class="c-posts__posts-outer-wrapper">
         <?php if ( $blog_query->have_posts() ) : ?>
           <?php while ( $blog_query->have_posts() ) :
@@ -67,7 +67,7 @@
           <?php endif; ?>
           </div>
         </div>
-        <div class="l-col l-col-4">
+        <div class="l-col l-col-4 l-col-m-hide">
           <div class="c-posts__categories-wrapper">
             <h3 class="c-posts__categories-heading"><?php _e('Kategorien', 'wiki') ?></h3>
             <ul class="c-posts__categories__ul">

@@ -1,5 +1,8 @@
 (function ($) {
+  var body = $('body');
   "use strict";
+  var isiOS = false;
+
   var WIKI = WIKI || {},
     home_url = php_array.home_url,
     ajax_url = php_array.ajax_url,
@@ -177,13 +180,95 @@
 
   }
 
-  WIKI._ScrollLock = function (targetelem, state) {
-    if (state) {
-      bodyScrollLock.disableBodyScroll(targetelem[0]);
-    } else {
-      bodyScrollLock.enableBodyScroll(targetelem[0]);
+  // WIKI._ScrollLock = function (targetelem, state) {
+  //   if (state) {
+  //     bodyScrollLock.disableBodyScroll(targetelem[0]);
+  //   } else {
+  //     bodyScrollLock.enableBodyScroll(targetelem[0]);
+  //   }
+  // }
+
+  WIKI.stickyMenu = function() {
+    var $window        = $(window),
+      height          = $window.height(),
+      width           = $window.width(),
+      menu            = $('.c-main-header'),
+      menuheight      = menu.height();
+
+    var scrollTop = $window.scrollTop();
+
+    console.log(scrollTop);
+    console.log(menuheight);
+
+    if (scrollTop > (menuheight) ) {
+      $('body').addClass('is-sticky');
+    }else {
+      $('body').removeClass('is-sticky');
     }
   }
+
+
+  WIKI._ScrollTo = function ($target, offset, offsettype, duration, callback) {
+    var offset_default = $('.c-main-header').outerHeight();
+
+    if ($('#wpadminbar:visible').length) offset_default += 32;
+
+    var duration_default = 800;
+    var offsettype_default = 'abs';
+
+    if (typeof offset == 'undefined') offset = offset_default;
+    if (typeof offsettype == 'undefined') offsettype = offsettype_default;
+    if (typeof duration == 'undefined') duration = duration_default;
+
+    if (offsettype == 'rel') {
+      offset += offset_default;
+    }
+
+    $('html, body').stop().animate({
+      scrollTop: typeof $target === 'number' ? $target + 1 : $target.offset().top - offset + 1 // + 1 because of rounding
+    }, duration, callback);
+  };
+
+  WIKI.MobileOffcanvas = function () {
+    var nav = $('.c-main-header');
+    $('.c-main-header__nav-trigger-wrapper').on('click', function (e) {
+      if(nav.hasClass('js-is-mobile-open')){
+        nav.removeClass('js-is-mobile-open')
+      } else {
+        nav.addClass('js-is-mobile-open');
+        $('.c-main-header__wrapper').addClass('js-is-header-fixed')
+      }
+      $(this).toggleClass('is-open');
+      body.toggleClass('is-offcanvas-mobile-open');
+      WIKI._ScrollLock($('.c-mobile-offcanvas__main'), body.hasClass('is-offcanvas-mobile-open'));
+    });
+
+    $('.c-main-nav-mobile .menu-item__sub-menu-opener ').click(function (e) {
+      e.preventDefault();
+      $(this).closest('.menu-item').toggleClass('is-expanded').find('.sub-menu').slideToggle();
+    });
+
+    $('.c-main-nav-mobile a').on('click', function (e) {
+      var $this = $(this)[0];
+      if (($this.href && $this.href.indexOf('#') != -1) && ($this.hostname == location.hostname) && (($this.pathname == location.pathname) || ('/' + $this.pathname == location.pathname))) {
+        e.preventDefault();
+        $('.c-main-header__nav-trigger-wrapper').removeClass('is-open');
+        body.removeClass('is-offcanvas-mobile-open');
+        WIKI._ScrollLock($('.c-mobile-offcanvas__main'), false);
+        WIKI._ScrollTo($($this.hash), 0);
+      }
+    });
+  };
+
+  WIKI._ScrollLock = function (targetelem, state) {
+    if (state) {
+      body.addClass('is-scroll-locked');
+      if (isiOS) bodyScrollLock.disableBodyScroll(targetelem[0]);
+    } else {
+      body.removeClass('is-scroll-locked');
+      if (isiOS) bodyScrollLock.enableBodyScroll(targetelem[0]);
+    }
+  };
 
   /* READY FUNCTION
     ============================= */
@@ -194,7 +279,11 @@
     WIKI.LoginProcess();
     WIKI.LogoutProcess();
     WIKI.addPost();
-
+    WIKI.MobileOffcanvas();
   });
+
+  $(window).on('scroll', function() {
+    WIKI.stickyMenu();
+  })
 
 })(jQuery);
