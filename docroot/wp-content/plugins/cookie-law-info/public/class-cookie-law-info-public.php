@@ -326,8 +326,9 @@ class Cookie_Law_Info_Public {
 	 This function should be attached to the wp_footer action hook.
 	*/
 	public function cookielawinfo_inject_cli_script() 
-	{
-	  $the_options = Cookie_Law_Info::get_settings();
+	{		
+		global $wp_customize;
+	    $the_options = Cookie_Law_Info::get_settings();
 	  	if ( $the_options['is_on'] == true )
 	  	{ 	
 			// Output the HTML in the footer:
@@ -367,6 +368,9 @@ class Cookie_Law_Info_Public {
 			    	}			    	
 			    }
 			}		    
+			if( isset( $wp_customize ) ) {
+				$notify_html = '';
+			}
 		    $notify_html = apply_filters('cli_show_cookie_bar_only_on_selected_pages',$notify_html,$post_slug);
 		    require_once plugin_dir_path( __FILE__ ).'views/cookie-law-info_bar.php';
 	  	}
