@@ -20,21 +20,38 @@
   @include media-breakpoint('m') {
     background-color: getColor('black');
   }
+
+  @include media-breakpoint('xs') {
+    top: 68px;
+  }
 }
 
 .admin-bar .c-mobile-offcanvas {
   top:120px;
+
   @include media-breakpoint('m') {
     top:134px;
+  }
+
+  @include media-breakpoint('xs') {
+    top: 114px;
   }
 }
 
 .is-sticky .c-mobile-offcanvas {
-  top: 48px
+  top: 48px;
 }
 
 .is-sticky.admin-bar .c-mobile-offcanvas {
-  top: 80px
+  top: 80px;
+
+  @include media-breakpoint('m') {
+    top:92px;
+  }
+
+  @include media-breakpoint('xs') {
+    top:46px;
+  }
 }
 
 .c-mobile-offcanvas__main {

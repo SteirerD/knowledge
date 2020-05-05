@@ -13,6 +13,14 @@
 
 .admin-bar.is-sticky .c-main-header {
   top: 32px;
+
+  @include media-breakpoint('m') {
+    top:45px;
+  }
+
+  @include media-breakpoint('s') {
+    top:0;
+  }
 }
 
 .c-main-header__wrapper {
