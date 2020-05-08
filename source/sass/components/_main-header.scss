@@ -23,6 +23,10 @@
   }
 }
 
+.c-main-header__logo {
+  max-width: 50%;
+}
+
 .c-main-header__wrapper {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -110,9 +114,9 @@
   height: 100%;
   width: 30px;
 
-  @include media-breakpoint('xs') {
-    width: 20px;
-  }
+  //@include media-breakpoint('xs') {
+  //  width: 20px;
+  //}
 }
 
 .c-user-logout__svg {
@@ -144,6 +148,12 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
+  top: 100%;
+  left: -50%;
+
+  @include media-breakpoint('m') {
+    display: none;
+  }
 }
 
 .c-add-post:hover .c-add-post__tooltip {

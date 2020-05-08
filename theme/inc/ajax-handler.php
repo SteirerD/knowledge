@@ -13,8 +13,9 @@
     $login_data = array();
     $login_data['user_login'] = $username;
     $login_data['user_password'] = $password;
+    $login_data['remember'] = true;
     
-    $user_signin = wp_signon( $login_data, false );
+    $user_signin = wp_signon( $login_data, true );
     
     if ( is_wp_error( $user_signin ) ) {
       
@@ -37,7 +38,6 @@
       }
       
     } else {
-      
       $status = 'success';
       $text = __( 'Login erfolgreich.', 'wiki' );
       
